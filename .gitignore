@@ -1,0 +1,12 @@
+.DS_Store
+.#*
+*.stackdump
+emacs_backtrace.txt
+cscope.files
+cscope.out
+#####
+##### build output
+#####
+lua/buildoutput
+do-me
+init
