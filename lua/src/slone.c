@@ -9,7 +9,9 @@ int main(int argc, char *argv[])
 {
     char buff[256];
     int error;
+    /* open lua */
     lua_State *L = luaL_newstate();
+    /* open standard library */
     luaL_openlibs(L);
 
     while (fgets(buff, sizeof(buff), stdin)) {
