@@ -32,13 +32,20 @@ static int average(lua_State *L)
 
 int main(int argc, char *argv[])
 {
+#if 1
+    lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+    lua_register(L, "average", average);
+    luaL_loadfile(L, "average.lua");
+    lua_pcall(L, 0, 0, 0);
+#else
     lua_State *L = lua_open();
     lua_baselibopen(L);
     /* register our function */
     lua_register(L, "average", average);
     /* run the script */
     lua_dofile(L, "average.lua");
-    
+#endif
 
     lua_close(L);
     return 0;

@@ -6,12 +6,18 @@
 
 int main(int argc, char *argv[])
 {
-    lua_State *L = lua_open();
     int sum;
-
+#if 1
+    lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+    luaL_loadfile(L, "add.lua");
+    lua_pcall(L, 0, 0, 0);
+#else
+    lua_State *L = lua_open();
     lua_baselibopen(L);
     /* load script */
     lua_dofile(L, "add.lua");
+#endif
     /* func name */
     lua_getglobal(L, "add");
     /* first arg */

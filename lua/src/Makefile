@@ -17,16 +17,16 @@ RM= rm -f
 LUA_PATH=$(shell lua-config --include --libs)
 
 init: init.c
-	$(CC) -o $@ $? $(LUA_PATH)
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
 do-me: do-me.c
-	$(CC) -o $@ $? $(LUA_PATH)
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
 add: add.c
-	$(CC) -o $@ $? $(LUA_PATH)
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
 average: average.c
-	$(CC) -o $@ $? $(LUA_PATH)
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
 slone: slone.c
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
