@@ -8,5 +8,6 @@ cscope.out
 ##### build output
 #####
 lua/buildoutput
+add
 do-me
 init

@@ -7,5 +7,8 @@ init: init.c
 do-me: do-me.c
 	gcc -o $@ $? $(LUA_PATH)
 
+add: add.c
+	gcc -o $@ $? $(LUA_PATH)
+
 clean:
-	rm init do-me
+	rm init do-me add
