@@ -10,5 +10,8 @@ do-me: do-me.c
 add: add.c
 	gcc -o $@ $? $(LUA_PATH)
 
+average: average.c
+	gcc -o $@ $? $(LUA_PATH)
+
 clean:
-	rm init do-me add
+	rm init do-me add average
