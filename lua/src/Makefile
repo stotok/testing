@@ -32,10 +32,10 @@ slone: slone.c
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
 sdump: sdump.c
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
+	$(CC) -o $@ -DWITH_MAIN $(CFLAGS) $(LDFLAGS) $? $(LIBS)
 
-sconf: sconf.c
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $? $(LIBS)
+sconf: sconf.c sdump.c
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) sconf.c sdump.c $(LIBS)
 
 clean:
 	$(RM) init do-me add average slone sdump sconf

@@ -5,10 +5,14 @@
 #include "lauxlib.h"
 #include "lualib.h"
 
-static void stackDump(lua_State *L)
+#ifdef WITH_MAIN
+static
+#endif
+void stackDump(lua_State *L, const char *str)
 {
     int i;
     int top = lua_gettop(L);                  /* depth of the stack */
+    printf("\nStack %s: ", str);
     for (i = 1; i <= top; i++) {              /* repeat each level */
         int t = lua_type(L, i);
         switch (t) {
@@ -30,6 +34,7 @@ static void stackDump(lua_State *L)
     printf("\n");                                    /* end of list */
 }
 
+#ifdef WITH_MAIN
 int main(int argc, char *argv[])
 {
     lua_State *L = luaL_newstate();
@@ -38,23 +43,24 @@ int main(int argc, char *argv[])
     lua_pushnumber(L, 10);
     lua_pushnil(L);
     lua_pushstring(L, "hello");
-    stackDump(L); /* true 10 nil 'hello' */
+    stackDump(L, "Enter"); /* true 10 nil 'hello' */
 
     lua_pushvalue(L, -4);
-    printf("1: "); stackDump(L); /* true 10 nil 'hello' true */
+    stackDump(L, "1"); /* true 10 nil 'hello' true */
     
     lua_replace(L, 3);
-    printf("2: "); stackDump(L); /* true 10 true 'hello' true */
+    stackDump(L, "2"); /* true 10 true 'hello' true */
     
     lua_settop(L, 6);
-    printf("3: "); stackDump(L); /* true 10 true 'hello' nil  nil */
+    stackDump(L, "3"); /* true 10 true 'hello' nil  nil */
     
     lua_remove(L, -3);
-    printf("4: "); stackDump(L); /* true 10 true nil nil */
+    stackDump(L, "4"); /* true 10 true nil nil */
     
     lua_settop(L, -5);
-    printf("5: "); stackDump(L); /* true */
+    stackDump(L, "5"); /* true */
 
     lua_close(L);
     return 0;
 }
+#endif
