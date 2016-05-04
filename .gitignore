@@ -8,6 +8,8 @@ cscope.out
 ##### build output
 #####
 lua/buildoutput
+cmake/prj01/build
+cmake/prj02/build
 add
 do-me
 init

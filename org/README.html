@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-04-25 Mon 07:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>worf.el documentation</title>
+<meta name="generator" content="Org-mode" />
+<meta name="author" content="Totok Sulistiomono" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">worf.el documentation</h1>
+<p>
+<a href="https://github.com/abo-abo/worf">Back to github.</a>
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Intro</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+This extension works similar to <a href="http://orgmode.org/manual/Speed-keys.html">org-mode's speed keys</a>, while adding in
+a bit of <i>vi</i> flavor, specifically:
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Modal editing</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+This is just what the speed keys do: pressing <code>a</code> - <code>z</code>, <code>A</code> - <code>Z</code>, or
+<code>0</code> - <code>9</code> while the point is positioned as below will call a command
+instead of inserting these characters:
+</p>
+
+<table><tbody><tr><td>
+<div class="org-src-container">
+
+<pre class="src src-text">||* foo
+</pre>
+</div>
+</td><td>
+<div class="org-src-container">
+
+<pre class="src src-text">*||* bar
+</pre>
+</div>
+</td><td>
+<div class="org-src-container">
+
+<pre class="src src-text">||#+ baz
+</pre>
+</div>
+</td></tr></tbody></table>
+
+<p>
+As you see, the point has to be either at one of the <code>*</code> that start from
+the beginning of the line or actually at the beginning of the line,
+followed by <code>#+</code> which will further be referred to as markup.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Nouns and verbs</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+It's just an intuitive way of organizing the key bindings borrowed
+from vi: the commands are sentences - combinations of a verb and a
+noun used together.
+</p>
+
+<p>
+Similar to vi, <a href="#left"><code>h</code></a> / <a href="#down"><code>j</code></a> / <a href="#up"><code>k</code></a> / <a href="#right"><code>l</code></a> are the nouns that represent the
+arrow keys. These and additional nouns are listed in the tables below.
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">Nouns table</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="#down"><code>j</code></a></td>
+<td class="org-left">down</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#up"><code>k</code></a></td>
+<td class="org-left">up</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#left"><code>h</code></a></td>
+<td class="org-left">left</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#right"><code>l</code></a></td>
+<td class="org-left">right</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#added"><code>a</code></a></td>
+<td class="org-left">added</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#property"><code>p</code></a></td>
+<td class="org-left">property</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#tags"><code>t</code></a></td>
+<td class="org-left">tags</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">Verbs table</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="#goto">none</a></td>
+<td class="org-left"><i>goto</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#/change/"><code>c</code></a></td>
+<td class="org-left"><i>change</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#change-tree"><code>cf</code></a></td>
+<td class="org-left"><i>change tree</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#change-shift"><code>cs</code></a></td>
+<td class="org-left"><i>change shift</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#keyword"><code>w</code></a></td>
+<td class="org-left"><i>keyword</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#clock"><code>C</code></a></td>
+<td class="org-left"><i>clock</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#delete"><code>d</code></a></td>
+<td class="org-left"><i>delete</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#yank"><code>y</code></a></td>
+<td class="org-left"><i>yank</i></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="#mark"><code>m</code></a></td>
+<td class="org-left"><i>mark</i></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19">Nouns</h2>
+<div class="outline-text-2" id="text-orgheadline19">
+</div><div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="down"><a id="orgheadline6"></a><code>j</code> - down</h3>
+<div class="outline-text-3" id="text-down">
+<p>
+Move <i>down</i> across headings and markup. Use a number prefix to move
+several times at once, i.e. <code>2j</code> will move two headings down.
+</p>
+
+<p>
+When you're in a heading, <code>j</code> will not enter markup, use <a href="#right"><code>l</code></a> for that
+instead, as markup that belongs to a heading can be seen as being
+<i>right</i> of that heading. This restriction speeds up the movement
+across headings that contain a lot of markup.
+</p>
+
+<p>
+When you're in markup, <code>j</code> will not enter a heading, use <a href="#left"><code>h</code></a> for that
+instead, as the heading can be seen as being <i>left</i> of its markup.
+This restriction allows to use a huge numeric arg (e.g. <code>9j</code> or <code>99j</code>)
+to move all the way to the last markup of the heading.
+</p>
+
+<p>
+The exception to both restrictions is the first markup in the file
+that does not belong to any heading.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="up"><a id="orgheadline7"></a><code>k</code> - up</h3>
+<div class="outline-text-3" id="text-up">
+<p>
+Move <i>up</i> across headings and markup. Use a number prefix to move
+several times at once, i.e. <code>3k</code> will move three headings up.
+</p>
+
+<p>
+Same rules as <a href="#down"><code>j</code></a> apply.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="left"><a id="orgheadline8"></a><code>h</code> - left</h3>
+<div class="outline-text-3" id="text-left">
+<p>
+Move <i>left</i> i.e. to the parent heading of current heading or markup.
+</p>
+
+<p>
+You can use it e.g. to go from fifth level 3 heading to its parent
+level 2 heading, or from the second source block to the parent
+heading.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="right"><a id="orgheadline9"></a><code>l</code> - right</h3>
+<div class="outline-text-3" id="text-right">
+<p>
+Move <i>right</i> (i.e. to the first child of current heading).  You can
+use it to get to the first markup of the current heading.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="added"><a id="orgheadline13"></a><code>a</code> - added</h3>
+<div class="outline-text-3" id="text-added">
+<p>
+Represents <i>added</i> heading. The behavior depends on the currently
+active verb:
+</p>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">goto</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<p>
+Forward to <code>org-insert-heading-respect-content</code> (bound to <code>C-RET</code> in <code>org-mode</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">change</h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<p>
+Forward to <code>org-meta-return</code> (bound to <code>M-RET</code> in <code>org-mode</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">keyword</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+<p>
+Add a new heading with a corresponding keyword.
+</p>
+
+<p>
+For example <code>wta</code> will add a new <b>TODO</b>, and <code>wna</code> will add a new
+<b>NEXT</b>.
+</p>
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="property"><a id="orgheadline17"></a><code>p</code> - property</h3>
+<div class="outline-text-3" id="text-property">
+<p>
+Represents current heading's <i>property</i>. The behavior depends on the
+currently active verb:
+</p>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14">goto</h4>
+<div class="outline-text-4" id="text-orgheadline14">
+<p>
+Move to the property, i.e. open the property drawer and place the
+point on the first property.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15">change</h4>
+<div class="outline-text-4" id="text-orgheadline15">
+<p>
+Change property. This forwards to <code>org-set-property</code>, which will
+prompt you for the name of the property and it's value.
+</p>
+
+<p>
+You can use this to add new properties as well.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16">delete</h4>
+<div class="outline-text-4" id="text-orgheadline16">
+<p>
+Delete property. This forwards to <code>org-delete-property</code>.
+</p>
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="tags"><a id="orgheadline18"></a><code>t</code> - tags</h3>
+<div class="outline-text-3" id="text-tags">
+<p>
+Represents current heading's <i>tags</i>.
+</p>
+
+<p>
+Currently, the only meaningful sentence is <code>ct</code>, which forwards to
+<code>org-set-tags</code>.
+</p>
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20">Verbs</h2>
+<div class="outline-text-2" id="text-orgheadline20">
+<p>
+Some verbs, such as <a href="#/change/"><code>c</code></a> (change), or <a href="#change-tree"><code>cf</code></a> (change tree) are <i>sticky</i>: once you
+activate them, they stick around until deactivated or you switch to
+another sticky verb (only one can be active at a time).  Their
+stickiness is represented by a change in the mode line. Each of them
+can be deactivated by the same key that activated them, or universally
+with <code>q</code>. Currently separate minor modes are used to implement sticky
+verbs because their concept is exactly the same.
+</p>
+
+<p>
+Other verbs, such as <a href="#clock"><code>C</code></a> (clock), are more like <i>vi</i> verbs, i.e. they
+deactivate themselves after the first command.
+</p>
+
+<p>
+And just to add to the confusion, some nouns will deactivate a verb
+(e.g. <code>cwd</code>), while others won't (e.g. <code>cj</code>).
+</p>
+<hr  />
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="goto"><a id="orgheadline21"></a><i>goto</i></h3>
+<div class="outline-text-3" id="text-goto">
+<p>
+This verb is active by default. Its effect on the nouns is to move the
+point appropriately.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="/change/"><a id="orgheadline22"></a><code>c</code> - <i>change</i></h3>
+<div class="outline-text-3" id="text-/change/">
+<p>
+Call <code>worf-change-mode</code>.
+</p>
+
+<p>
+This is a <i>sticky</i> verb: once you press <code>c</code>, <i>change</i> verb will be
+active until you switch to a different verb.
+</p>
+
+<p>
+Use the same letter to deactivate a verb as to activate it, i.e. <code>c</code>
+will deactivate <code>worf-change-mode</code>.  <code>q</code> will universally deactivate
+any verb and return you to <i>goto</i> implicit verb.
+</p>
+
+<p>
+While <code>worf-change-mode</code> is active, <code>hjkl</code> move the current heading
+in appropriate directions: it's the same as holding <code>M-</code> and using
+arrow keys in the default org.
+</p>
+
+<ul class="org-ul">
+<li><code>cp</code> will change the selected property</li>
+<li><code>ct</code> will change current tags</li>
+<li><code>ca</code> will add heading above instead of below, like <code>a</code> does</li>
+<li><code>cn</code> will change the name of a source block</li>
+</ul>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="change-tree"><a id="orgheadline23"></a><code>cf</code> - <i>change tree</i></h3>
+<div class="outline-text-3" id="text-change-tree">
+<p>
+Call <code>worf-change-tree-mode</code>.
+</p>
+
+<p>
+While <code>worf-change-tree-mode</code> is active, <code>hjkl</code> move the current
+heading tree in appropriate directions: it's the same as holding
+<code>S-M-</code> and using arrow keys in the default org.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="change-shift"><a id="orgheadline24"></a><code>cs</code> - <i>change shift</i></h3>
+<div class="outline-text-3" id="text-change-shift">
+<p>
+Call <code>worf-change-shift-mode</code>.
+</p>
+
+<p>
+While <code>worf-change-shift-mode</code> is active, <code>hjkl</code> act as
+<code>S-</code> and arrows in the default org.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="keyword"><a id="orgheadline25"></a><code>w</code> <i>keyword</i></h3>
+<div class="outline-text-3" id="text-keyword">
+<p>
+Call <code>worf-keyword-mode</code>.
+</p>
+
+<p>
+You select a keyword e.g. <b>TODO</b> or <b>NEXT</b> and <code>j</code> / <code>k</code> move just by the
+selected keyword, skipping all other headings.
+</p>
+
+<p>
+Additionally, <code>a</code> will add a new heading with the appropriate keyword,
+e.g. <code>wta</code> will add a new <b>TODO</b>, and <code>wna</code> will add a new <b>NEXT</b>.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="clock"><a id="orgheadline26"></a><code>C</code> - <i>clock</i></h3>
+<div class="outline-text-3" id="text-clock">
+<p>
+Call <code>worf-clock-mode</code>.
+</p>
+
+<p>
+This one isn't sticky and has only two nouns that work with it:
+</p>
+<ul class="org-ul">
+<li><code>i</code> (<code>org-clock-in</code>)</li>
+<li><code>o</code> (<code>org-clock-out</code>)</li>
+</ul>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="delete"><a id="orgheadline27"></a><code>d</code> - <i>delete</i></h3>
+<div class="outline-text-3" id="text-delete">
+<p>
+Call <code>worf-delete-mode</code>.
+</p>
+
+<p>
+This one isn't sticky and changes the behavior of <code>j</code> to delete down,
+and <code>k</code> to delete up. You can mix in numbers to delete many times,
+i.e. <code>d3j</code> will delete 3 headings at once.
+</p>
+
+<ul class="org-ul">
+<li><code>dp</code> will delete the selected property</li>
+<li><code>dn</code> will delete the name of the current source block</li>
+</ul>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="yank"><a id="orgheadline28"></a><code>y</code> - <i>yank</i></h3>
+<div class="outline-text-3" id="text-yank">
+<p>
+Call <code>worf-yank-mode</code>.
+</p>
+
+<p>
+It's similar to <a href="#delete"><code>d</code></a>, but will copy the headings into
+the kill ring instead of deleting.
+</p>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="mark"><a id="orgheadline29"></a><code>m</code> - <i>mark</i></h3>
+<div class="outline-text-3" id="text-mark">
+<p>
+Call <code>worf-mark-mode</code>.
+</p>
+
+<p>
+It's similar to <a href="#delete"><code>d</code></a>, but will mark the headings instead
+of deleting.
+</p>
+<hr  />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30">Miscellaneous commands</h2>
+<div class="outline-text-2" id="text-orgheadline30">
+<p>
+Some other things included in worf, that don't fit into the
+verb-noun structure, are:
+</p>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><code>i</code> - <code>worf-tab</code></h3>
+<div class="outline-text-3" id="text-orgheadline31">
+<p>
+Wraps around <code>org-cycle</code>.
+</p>
+
+<p>
+Additionally, e.g. <code>2i</code> will show a summary up to level 2, <code>3i</code> -
+level 3 etc.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><code>I</code> - <code>worf-shifttab</code></h3>
+<div class="outline-text-3" id="text-orgheadline32">
+<p>
+Just a wrapper for <code>org-shifttab</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><code>o</code> - <code>worf-ace-link</code></h3>
+<div class="outline-text-3" id="text-orgheadline33">
+<p>
+Open a link within current heading that's visible on screen. See
+<a href="https://github.com/abo-abo/ace-link">ace-link</a> for a package that uses this method in other modes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><code>g</code> - <code>worf-goto</code></h3>
+<div class="outline-text-3" id="text-orgheadline34">
+<p>
+Open a <code>helm</code> outline of the current buffer.  It's very good when you
+want to search/navigate to a heading by word or level. See <a href="https://github.com/abo-abo/lispy">lispy</a> for a
+package that uses this method to navigate Lisp code.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><code>L</code> - <code>worf-copy-heading-id</code></h3>
+<div class="outline-text-3" id="text-orgheadline35">
+<p>
+Copy the link to current heading to the kill ring. This may be useful
+when you want to create a lot of links.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Totok Sulistiomono</p>
+<p class="date">Created: 2016-04-25 Mon 07:48</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
