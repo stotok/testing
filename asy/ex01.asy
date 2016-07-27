@@ -1,26 +1,26 @@
 settings.outformat="pdf";
 
-unitsize(5cm);
-
-real xmin = -0.1;
-real xmax = 2;
-real ymin = -0.1;
-real ymax = 2;
-
-path s = (0,0){up} .. (1,1) .. (xmax,sqrt(xmax));
-fill(s -- (xmax,0) -- cycle, mediumgray);
-draw(s);
-
-arrowbar axisarrow = Arrow(TeXHead);
-draw((xmin,0) -- (xmax,0), arrow=axisarrow);
-draw((0,ymin) -- (0,ymax), arrow=axisarrow);
-
-real x = 1.4;
-real dx = .05;
-real t0 = times(s,x)[0];
-real t1 = times(s,x+dx)[0];
-path striptop = subpath(s, t0, t1);
-draw((x,0) -- striptop -- (x+dx,0) -- cycle, blue);
+//unitsize(5cm);
+//
+//real xmin = -0.1;
+//real xmax = 2;
+//real ymin = -0.1;
+//real ymax = 2;
+//
+//path s = (0,0){up} .. (1,1) .. (xmax,sqrt(xmax));
+//fill(s -- (xmax,0) -- cycle, mediumgray);
+//draw(s);
+//
+//arrowbar axisarrow = Arrow(TeXHead);
+//draw((xmin,0) -- (xmax,0), arrow=axisarrow);
+//draw((0,ymin) -- (0,ymax), arrow=axisarrow);
+//
+//real x = 1.4;
+//real dx = .05;
+//real t0 = times(s,x)[0];
+//real t1 = times(s,x+dx)[0];
+//path striptop = subpath(s, t0, t1);
+//draw((x,0) -- striptop -- (x+dx,0) -- cycle, blue);
 
 //clip(box((1, ymin), (1.6,1.5)));
 
@@ -92,3 +92,39 @@ draw((x,0) -- striptop -- (x+dx,0) -- cycle, blue);
 //draw(subpath(p, isections[0], isections[1]), blue+linewidth(.8), arrow=MidArcArrow(TeXHead));
 //draw(subpath(p, isections[2], isections[3]), red+linewidth(.8), arrow=MidArcArrow(TeXHead));
 //draw((1/3,-1.5) -- (1/3,2), gray+linewidth(.2));
+
+unitsize(4cm);
+defaultpen(fontsize(10pt));
+import graph;
+
+real xmin = -0.1;
+real xmax = 2;
+real ymin = -0.1;
+real ymax = 2;
+
+real f(real x) { return sqrt(x); }
+path s = graph(f, 0, 2, operator..);
+pen fillpen = mediumgray;
+fill(s -- (xmax,0) -- cycle, fillpen);
+draw(s, L=Label("$y=f(x)$", position=EndPoint));
+
+real x = 1.4;
+real dx = .05;
+real t0 = times(s,x)[0];
+real t1 = times(s,x+dx)[0];
+path striptop = subpath(s,t0,t1);
+filldraw((x,0) -- striptop -- (x+dx,0) -- cycle, black);
+
+real barheight = f(x) + .1;
+Label dxlabel = Label("$dx$", position=MidPoint, align=2N);
+draw((x,barheight) -- (x+dx, barheight), L=dxlabel, bar=Bars);
+
+real barx = x + dx + 0.1;
+Label fxlabel = Label("$f(x)$", align=(0,0), position=MidPoint, filltype=Fill(fillpen));
+draw((barx,0) -- (barx, f(x)), L=fxlabel, arrow=Arrows(), bar=Bars);
+
+arrowbar axisarrow = Arrow(TeXHead);
+Label xlabel = Label("$x$", position=EndPoint);
+draw((xmin,0) -- (xmax,0), arrow=axisarrow, L=xlabel);
+Label ylabel = Label("$y$", position=EndPoint);
+draw((0,ymin) -- (0,ymax), arrow=axisarrow, L=ylabel);
