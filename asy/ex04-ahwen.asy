@@ -4,12 +4,6 @@ import geometry;
 
 size(4cm,0);
 
-//coordsys R=currentcoordsys;
-//point A=(1.5,3), B=(4,0);
-//dot("$A$", A); dot("$B$", B);
-//line l1=line(A,B);       draw(l1, linewidth(bp));
-//line l2=rotate(-45,A)*l1; draw(l2, linewidth(bp));
-
 coordsys R=currentcoordsys;
 point A=(4,.6); //dot("$A$", A);
 point B=(.1, .1); //dot("$B$", B);
