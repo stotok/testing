@@ -1,0 +1,56 @@
+\begin{center}
+\begin{asy}[height=8cm,inline=true,attach=false,viewportwidth=\linewidth]
+import graph3;
+
+defaultrender.merge=true;  // Fast low-quality rendering
+//defaultrender.merge=false; // Slow high-quality rendering
+real width=10*linewidth(currentpen);
+
+pen good_pen=blue;
+pen bad_pen=red;
+
+string filename="./data/Save_h15_Xi500";
+string prefix=filename;
+file in_good=input(filename+"Good_Xi.txt");
+file in_bad=input(filename+"Bad_Xi.txt");
+
+real[][] data_good = in_good.dimension(0,3);
+write(data_good.length);  
+real[][] data_bad = in_bad.dimension(0,3);
+write(data_bad.length);  
+
+for(int i=0; i < data_good.length; ++i )
+    {
+	pixel( (data_good[i][0], data_good[i][1], data_good[i][2]), good_pen, width);
+	}
+	
+for(int i=0; i < data_bad.length; ++i )
+    {
+	pixel( (data_bad[i][0], data_bad[i][1], data_bad[i][2]), bad_pen, width);
+	}
+
+triple m=currentpicture.userMin();
+triple M=currentpicture.userMax();
+triple target=0.5*(m+M);
+
+xaxis3("$x$",Bounds,InTicks);
+yaxis3("$y$",Bounds,InTicks);
+zaxis3("$z$",Bounds,InTicks);
+
+currentprojection=perspective(camera=target+realmult(dir(68,225),M-m),
+                             target=target);
+						  
+string options;
+string viewfilename=prefix+".views";
+
+if(!error(input(viewfilename,check=false)))
+  options="3Dviews="+viewfilename;
+
+// Use the shipout OUTSIDE latex!!
+//shipout(prefix,options=options);
+
+// Have a look at the -globalwrite command line (of asymptote) option if problem in generating pdf files
+
+\end{asy}
+\label{fig:CSSamples}
+\end{center}
