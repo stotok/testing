@@ -52,9 +52,17 @@ import geometry;
 //markrightangle(B, A, C);
 
 // *************************************************************
-size(4cm,0);
-point C=(0,.5); point D=(4,3);
+size(5cm,0);
+dotfactor*=0;                   // no draw for the "dot" point
+point C=(0,.5); dot("$C$", C, W);
+point D=(4,3);  dot("$D$", D);
 line l1=line(C, false, D, false); draw(l1);
 point Z=midpoint(l1);
-point B=rotate(100, Z)*C;
-line l2=line(B,Z); draw(l2);
+point B=rotate(100, Z)*C; dot("$B$", B);
+point A=rotate(180, Z)*B; dot("$A$", A, NW);
+line l2=line(B, false, A, false); draw(l2);
+//
+markangle("$100^\circ$", reverse(l1), reverse(l2), radius=.7*markangleradius());
+markangle("$80^\circ$", l2, l1, radius=markangleradius());
+markangle("$w$", l1, l2, radius=.7*markangleradius());
+markangle("$z$", reverse(l2), reverse(l1), radius=markangleradius());
