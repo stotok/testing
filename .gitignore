@@ -24,6 +24,10 @@ sconf.exe
 #
 # latex/asy output
 #
-asy/auto/
-asy/*.pdf
-asy/*.aux
+*.aux
+asy/ahwen/*.pdf
+asy/ahwen/latexusage-*.tex
+asy/ahwen/fig3D.tex
+asy/ahwen/latexusage-*.asy
+asy/ahwen/test.asy
+asy/ahwen/testAsymptote.tex
