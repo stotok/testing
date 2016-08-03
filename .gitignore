@@ -21,4 +21,9 @@ scan
 scan.exe
 sconf
 sconf.exe
+#
+# latex/asy output
+#
+asy/auto/
 asy/*.pdf
+asy/*.aux
