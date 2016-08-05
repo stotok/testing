@@ -158,21 +158,39 @@ import geometry;
 //markangle("$q$", lB2, lMA, radius=0.6*markangleradius());
 
 // *****************************************
+//size(5cm,0);
+//dotfactor*=0;
+//point A=(-3,1); dot("$A$", A, W);
+//point B=(5,-0.5); dot("$B$", B, E);
+//line lAB=line(A, false, B, false); point M=midpoint(lAB);
+//line lMB=line(M, false, B, false); draw(lMB);
+//line lMA=line(M, false, A, false); draw(lMA);
+//point D=scale(0.8, M)*(rotate(45,M)*B); dot("$D$", D, NE);
+//line lMD=line(M, false, D, false); draw(lMD);
+//markangle("$45^\circ$", lMB, lMD, radius=markangleradius());
+//point E=scale(0.8, M)*(rotate(-78,M)*A); dot("$E$", E, N);
+//line lME=line(M, false, E, false); draw(lME);
+//markangle("$78^\circ$", lME, lMA, radius=markangleradius());
+//point C=rotate(180,M)*D; dot("$C$", C, SW);
+//line lMC=line(M, false, C, false); draw(lMC);
+//point F=rotate(180,M)*E; dot("$F$", F, S);
+//line lMF=line(M, false, F, false); draw(lMF);
+//markangle("$p$", lMC, lMF, radius=markangleradius());
+
+// **********************
+// **********************
 size(5cm,0);
-dotfactor*=0;
-point A=(-3,1); dot("$A$", A, W);
-point B=(5,-0.5); dot("$B$", B, E);
-line lAB=line(A, false, B, false); point M=midpoint(lAB);
-line lMB=line(M, false, B, false); draw(lMB);
-line lMA=line(M, false, A, false); draw(lMA);
-point D=rotate(45,M)*B; dot("$D$", D, NE);
-line lMD=line(M, false, D, false); draw(lMD);
-markangle("$45^\circ$", lMB, lMD, radius=markangleradius());
-point E=rotate(-78,M)*A; dot("$E$", E, N);
-line lME=line(M, false, E, false); draw(lME);
-markangle("$78^\circ$", lME, lMA, radius=markangleradius());
-point C=rotate(180,M)*D; dot("$C$", C, SW);
-line lMC=line(M, false, C, false); draw(lMC);
-point F=rotate(180,M)*E; dot("$F$", F, S);
-line lMF=line(M, false, F, false); draw(lMF);
-markangle("$p$", lMC, lMF, radius=markangleradius());
+real k=0.6;
+point B=(0,0); point C=(4,1);
+line lBC=line(B, false, C, false); draw(lBC);
+point D=scale(k, C)*(rotate(-85,C)*B);
+line lCD=line(C, false, D, false); draw(lCD);
+line l1=parallel(D, lBC);
+line l2=parallel(B, lCD);
+point A=intersectionpoint(l1, l2);
+line lAB=line(A, false, B, false); draw(reverse(lAB), arrow=MidArrow(TeXHead));
+line lAD=line(A, false, D, false); draw(lAD, marker=StickIntervalMarker());
+markangle("$85^\circ$", lCD, reverse(lBC), radius=0.6*markangleradius());
+markangle("$a$", lAB, lAD, radius=0.6*markangleradius());
+markangle("$b$", lBC, reverse(lAB), radius=0.6*markangleradius());
+//dot("$B$", B, SW); dot("$C$", C, SE); dot("$D$", D, NE); dot("$A$", A, NW);
