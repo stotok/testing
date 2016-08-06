@@ -216,7 +216,7 @@ import geometry;
 
 // **************************
 // **************************
-size(5cm,0);
+size(6cm,0);
 real k=0.6;
 point A=(0,0); point B=(6,1);
 point X=rotate(-60,B)*A;
@@ -226,11 +226,12 @@ line lAB=line(A, true, B, false); draw(lAB, arrow=MidArrow());
 line lBC=line(B, false, C, false); draw(lBC);
 markangle("$60^\circ$", lBC, reverse(lAB), radius=0.5*markangleradius());
 line lAC=line(A, false, C, false); draw(lAC); markrightangle(A, C, B);
-markangle("$e$", lAB, lAC, radius=0.5*markangleradius());
+markangle("$e$", lAB, lAC, radius=markangleradius());
 line l1=parallel(C, lAB); line l2=rotate(180-105, A)*lAB;
 point D=intersectionpoint(l1, l2);
 line lAD=line(A, false, D, false); draw(lAD);
 line lDC=line(D, false, C, false); draw(lDC, arrow=MidArrow());
 markangle("$105^\circ$", reverse(lAD), lDC, radius=0.5*markangleradius());
-markangle("$f$", lAD, reverse(lAB), radius=0.5*markangleradius());
+markangle("$f$", lAD, reverse(lAB), radius=0.4*markangleradius());
+draw(A--scale(0.2,A)*(rotate(180,A)*B));
 //draw("$A$", A); draw("$B$", B); draw("$X$", X); draw("$C$",C);
