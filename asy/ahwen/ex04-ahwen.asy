@@ -179,19 +179,58 @@ import geometry;
 
 // **********************
 // **********************
+//size(5cm,0);
+//real k=0.6;
+//point B=(0,0); point C=(4,1);
+//line lBC=line(B, false, C, false); draw(lBC);
+//point D=scale(k, C)*(rotate(-85,C)*B);
+//line lCD=line(C, false, D, false); draw(lCD, arrow=MidArrow());
+//line l1=parallel(D, lBC);
+//line l2=parallel(B, lCD);
+//point A=intersectionpoint(l1, l2);
+//line lAB=line(A, false, B, false); draw(reverse(lAB), arrow=MidArrow());
+////line lAD=line(A, false, D, false); draw(lAD, Arrow(Relative(0.9)));
+//line lAD=line(A, false, D, false); draw(lAD, arrow=Arrow(position=Relative(0.7)));
+//markangle("$85^\circ$", lCD, reverse(lBC), radius=0.6*markangleradius());
+//markangle("$a$", lAB, lAD, radius=0.6*markangleradius());
+//markangle("$b$", lBC, reverse(lAB), radius=0.6*markangleradius());
+////dot("$B$", B, SW); dot("$C$", C, SE); dot("$D$", D, NE); dot("$A$", A, NW);
+
+// ************************
+// ************************
+//size(5cm,0);
+//real k=0.6;
+//point C=(0,0); point A=(5,-1);
+//line lAC=line(A, false, C, false); draw(lAC);
+//point B=scale(k,A)*(rotate(62,A)*C); line lAB=line(A, false, B, false);
+//draw(reverse(lAB), arrow=MidArrow());
+//markangle("$62^\circ$", lAC, lAB, radius=0.5*markangleradius());
+//line lBC=line(B, false, C, false); draw(lBC);
+//line l1=parallel(A, lBC); line l2=parallel(C, lAB);
+//point D=intersectionpoint(l1, l2);
+//line lCD=line(C, false, D, false); draw(lCD, arrow=MidArrow());
+//line lAD=line(A, false, D, false); draw(lAD);
+//markangle("$c$", reverse(lAC), lCD, radius=0.5*markangleradius());
+//markangle("$56^\circ$", reverse(lCD), reverse(lAD), radius=.7*markangleradius());
+////dot("$C$", C); dot("$A$", A); dot("$B$", B); dot("$D$", D);
+
+// **************************
+// **************************
 size(5cm,0);
 real k=0.6;
-point B=(0,0); point C=(4,1);
+point A=(0,0); point B=(6,1);
+point X=rotate(-60,B)*A;
+transform proj=projection(B,X);
+point C=proj*A;
+line lAB=line(A, true, B, false); draw(lAB, arrow=MidArrow());
 line lBC=line(B, false, C, false); draw(lBC);
-point D=scale(k, C)*(rotate(-85,C)*B);
-line lCD=line(C, false, D, false); draw(lCD, arrow=MidArrow());
-line l1=parallel(D, lBC);
-line l2=parallel(B, lCD);
-point A=intersectionpoint(l1, l2);
-line lAB=line(A, false, B, false); draw(reverse(lAB), arrow=MidArrow());
-//line lAD=line(A, false, D, false); draw(lAD, Arrow(Relative(0.9)));
-line lAD=line(A, false, D, false); draw(lAD, arrow=Arrow(position=Relative(0.7)));
-markangle("$85^\circ$", lCD, reverse(lBC), radius=0.6*markangleradius());
-markangle("$a$", lAB, lAD, radius=0.6*markangleradius());
-markangle("$b$", lBC, reverse(lAB), radius=0.6*markangleradius());
-//dot("$B$", B, SW); dot("$C$", C, SE); dot("$D$", D, NE); dot("$A$", A, NW);
+markangle("$60^\circ$", lBC, reverse(lAB), radius=0.5*markangleradius());
+line lAC=line(A, false, C, false); draw(lAC); markrightangle(A, C, B);
+markangle("$e$", lAB, lAC, radius=0.5*markangleradius());
+line l1=parallel(C, lAB); line l2=rotate(180-105, A)*lAB;
+point D=intersectionpoint(l1, l2);
+line lAD=line(A, false, D, false); draw(lAD);
+line lDC=line(D, false, C, false); draw(lDC, arrow=MidArrow());
+markangle("$105^\circ$", reverse(lAD), lDC, radius=0.5*markangleradius());
+markangle("$f$", lAD, reverse(lAB), radius=0.5*markangleradius());
+//draw("$A$", A); draw("$B$", B); draw("$X$", X); draw("$C$",C);
