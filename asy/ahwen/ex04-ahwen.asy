@@ -217,6 +217,7 @@ import geometry;
 // **************************
 // **************************
 size(6cm,0);
+real margin=2;
 real k=0.6;
 point A=(0,0); point B=(6,1);
 point X=rotate(-60,B)*A;
@@ -234,4 +235,6 @@ line lDC=line(D, false, C, false); draw(lDC, arrow=MidArrow());
 markangle("$105^\circ$", reverse(lAD), lDC, radius=0.5*markangleradius());
 markangle("$f$", lAD, reverse(lAB), radius=0.4*markangleradius());
 draw(A--scale(0.2,A)*(rotate(180,A)*B));
-//draw("$A$", A); draw("$B$", B); draw("$X$", X); draw("$C$",C);
+arrow(D, dir(90), green);
+draw("$A$", A); draw("$B$", B); draw("$X$", X); draw("$C$",C); draw("$D$",D);
+addMargins(margin,margin,margin,margin);
