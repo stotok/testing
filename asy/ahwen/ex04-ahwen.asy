@@ -240,21 +240,45 @@ import geometry;
 
 // ****************************
 // ****************************
-size(6cm,0);
+//size(6cm,0);
+//real margin=2;
+//point A=(0,0); point B=(4,1);
+//line lAB=line(A, false, B, false); draw(lAB, arrow=MidArrow());
+//point D=rotate(70, A)*B;
+//line lAD=line(A, false, D, false); draw(lAD, arrow=Arrow(SimpleHead, position=Relative(0.7)), marker=StickIntervalMarker(1,2));
+//line l1=parallel(D, lAB); line l2=parallel(B, lAD);
+//point C=intersectionpoint(l1, l2);
+//line lBC=line(B, false, C, false); draw(lBC, arrow=MidArrow(SimpleHead));
+//line lDC=line(D, false, C, false); draw(lDC, arrow=Arrow(position=Relative(0.4)), marker=StickIntervalMarker(1,2));
+//point H=scale(0.2, A)*(rotate(150, A)*D);
+//line l3=line(H, A); point G=intersectionpoint(l3, lDC);
+//line lHG=line(H, false, G, false); draw(lHG);
+//markangle("$150^\circ$", lAD, reverse(lHG), radius=0.4*markangleradius());
+//markangle("$g$", reverse(lHG), lDC, radius=0.4*markangleradius());
+//markangle("$h$", lAB, lHG, radius=0.6*markangleradius());
+////draw("$A$", A); draw("$B$", B); draw("$D$", D); draw("$C$", C); draw("$H$", H); draw("$G$",G);
+//addMargins(margin,margin,margin,margin);
+
+// *******************************
+// *******************************
+size(8cm,0);
+real angleDEB=120;              // just change this
+real angleABD=40;               // just change this
 real margin=2;
-point A=(0,0); point B=(4,1);
+point D=(0,0); point A=(-1,5); line l0=line(D,A);
+line lAD=line(A, false, D, false); draw(lAD);
+line l1=rotate(-50,D)*l0; line l2=rotate(90,A)*l0;
+point B=intersectionpoint(l1, l2);
 line lAB=line(A, false, B, false); draw(lAB, arrow=MidArrow());
-point D=rotate(70, A)*B;
-line lAD=line(A, false, D, false); draw(lAD, arrow=Arrow(SimpleHead, position=Relative(0.7)), marker=StickIntervalMarker(1,2));
-line l1=parallel(D, lAB); line l2=parallel(B, lAD);
-point C=intersectionpoint(l1, l2);
-line lBC=line(B, false, C, false); draw(lBC, arrow=MidArrow(SimpleHead));
-line lDC=line(D, false, C, false); draw(lDC, arrow=Arrow(position=Relative(0.4)), marker=StickIntervalMarker(1,2));
-point H=scale(0.2, A)*(rotate(150, A)*D);
-line l3=line(H, A); point G=intersectionpoint(l3, lDC);
-line lHG=line(H, false, G, false); draw(lHG);
-markangle("$150^\circ$", lAD, reverse(lHG), radius=0.4*markangleradius());
-markangle("$g$", reverse(lHG), lDC, radius=0.4*markangleradius());
-markangle("$h$", lAB, lHG, radius=0.6*markangleradius());
-//draw("$A$", A); draw("$B$", B); draw("$D$", D); draw("$C$", C); draw("$H$", H); draw("$G$",G);
+line lDB=line(D, false, B, false); draw(lDB);
+markrightangle(D,A,B);
+markangle("$40^\circ$", reverse(lAB), reverse(lDB));
+line l4=parallel(D, lAB); line l5=rotate(180-120-angleABD,B)*l1;
+point E=intersectionpoint(l4, l5);
+line lEB=line(E, false, B, false); draw(lEB, marker=StickIntervalMarker(1,1));
+point C=rotate(180-2*(180-angleDEB), B)*E;
+line lBC=line(B, false, C, false); draw(lBC, marker=StickIntervalMarker(1,1));
+line lDC=line(D, false, C, false); draw(lDC, arrow=MidArrow());
+markangle("$120^\circ$", lEB, reverse(lDC), radius=0.4*markangleradius());
+//draw("$D$", D); draw("$A$", A); draw("$B$", B); draw("$E$", E); draw("$C$", C);
 addMargins(margin,margin,margin,margin);
